@@ -12,13 +12,10 @@ public class p2 {
             int extra_value  = Extra_ct*rate;
             int original_value = Base_ct+extra_value;
 
-            int cost = original_value+(original_value*tax);
-            int total_bill = Base_ct + cost;
-
-
-
-            System.out.println("Total Bill : "+total_bill);
-
-            
+            double cost = original_value * (tax/100.0);
+            double total_bill = original_value + cost;
+            System.out.printf("Total Bill %.2f: ",total_bill);
     }
 }
+
+
