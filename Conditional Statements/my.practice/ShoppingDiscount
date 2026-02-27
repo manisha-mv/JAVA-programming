@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class ShoppingDiscount {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Purchase Amount: ");
+        double amount = sc.nextDouble();
+        double discount = 0;
+
+        if (amount > 5000) {
+            discount = amount * 0.20;
+            System.out.println("Discount Applied: 20%");
+        } 
+        else if (amount >= 2000) {
+            discount = amount * 0.10;
+            System.out.println("Discount Applied: 10%");
+        } 
+        else {
+            System.out.println("No Discount Applied");
+        }
+
+        double finalAmount = amount - discount;
+        System.out.println("Final Amount to Pay: " + finalAmount);
+
+        sc.close();
+    }
+}
