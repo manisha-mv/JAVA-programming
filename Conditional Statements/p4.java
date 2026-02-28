@@ -1,81 +1,80 @@
 import java.util.Scanner;
 
-public class p4{
-    public static void main(String[] args) {
-
+public class EcommerDynamic{
+    public static void main(String[]args){
+        
         Scanner sc = new Scanner(System.in);
 
-        String loyaltyTier = sc.next();
-        double cartValue = sc.nextDouble();
-        String productCategory = sc.next();
-        String membershipStatus = sc.next();
+        String tier = sc.next();
+        double cart = sc.nextDouble();
+        String Category = sc.next();
+        String member = sc.next();
 
-        int baseDiscount = 0;
-        int additionalDiscount = 0;
-        int totalDiscount = 0;
+        int b_d = 0;
+        int a_d = 0;
+        int a1_d = 0;
+        int total_d = 0;
+        double fin = 0.0;
+        double saving = 0.0;
+        double fin1 = 0.0;
 
-
-        if (loyaltyTier.equals("Bronze"))
-            baseDiscount = 5;
-        else if (loyaltyTier.equals("Silver"))
-            baseDiscount = 8;
-        else if (loyaltyTier.equals("Gold"))
-            baseDiscount = 12;
-        else
-            baseDiscount = 15;   
-
-
-       
-        if (cartValue >= 500 && cartValue <= 999)
-            additionalDiscount += 3;
-        else if (cartValue >= 1000 && cartValue <= 1999)
-            additionalDiscount += 5;
-        else if (cartValue >= 2000)
-            additionalDiscount += 7;
-
-
-      
-
-        if (productCategory.equals("Electronics")) {
-
-            if (membershipStatus.equals("Prime"))
-                additionalDiscount += 5;
-
+        if(tier.equals("Bronze")){
+            b_d =5;
         }
-        else if (productCategory.equals("Fashion")) {
-
-            additionalDiscount += 3;
-
+        else if(tier.equals("Silver")){
+            b_d = 8;
         }
-        else if (productCategory.equals("Books")) {
-
-            if (membershipStatus.equals("Prime"))
-                additionalDiscount += 5;
-
+        else if(tier.equals("Gold")){
+            b_d = 12;
         }
-        else if (productCategory.equals("Groceries")) {
-
-            if (cartValue > 300)
-                additionalDiscount += 2;
+        else if(tier.equals("Platinum")){
+            b_d = 15;
+        }
+            // additional Discount
+        if(cart>=500 && cart<=999){
+            a1_d = 3;
+        }
+        else if(cart>=1000 && cart<=1999){
+            a1_d = 5;
+        }
+        else if(cart>2000){
+            a1_d = 7;
         }
 
-       
+        // specific bonus
+        if(Category.equals("Electronics") && (member.equals("Prime"))){
+            a_d = a1_d+5;
+        }
+        else if(Category.equals("Fashion")){
+            a_d = a1_d +3;
+        }
+        else if(Category.equals("Books")){
+            a_d =a1_d+ 5;
+        }
+        else if(Category.equals("Groceries")){
+              if(cart>=300){
+                a_d = 2;
+         }
+        }
 
-        totalDiscount = baseDiscount + additionalDiscount;
-
-        double finalPrice = cartValue * (1 - totalDiscount / 100.0);
-        double savings = cartValue - finalPrice;
+        total_d = b_d +a_d;
+        fin = cart-(cart*total_d/100);
+        saving = cart- fin;
 
         
-        System.out.println("Loyalty Tier: " + loyaltyTier);
-        System.out.printf("Cart Value: $%.1f\n", cartValue);
-        System.out.println("Product Category: " + productCategory);
-        System.out.println("Membership: " + membershipStatus);
-        System.out.println("Base Discount: " + baseDiscount + "%");
-        System.out.println("Additional Discount: " + additionalDiscount + "%");
-        System.out.println("Total Discount: " + totalDiscount + "%");
-        System.out.printf("Final Price: $%.1f\n", finalPrice);
-        System.out.printf("Savings: $%.1f\n", savings);
+
+        System.out.println("===Total Discount===");
+        System.out.println();
+
+        System.out.println("Loyalty Tier : "+tier);
+        System.out.println("Cart Value : $"+cart);
+        System.out.println("Product Category : "+Category);
+        System.out.println("Membership : "+member);
+        System.out.println("Base Discount : "+b_d+"%");
+        System.out.println("Additional Discount : "+a_d+"%");
+        System.out.println("Total Discount : "+total_d+"%");
+        System.out.println("Final  price : $"+fin);
+        System.out.println("Savings : $"+saving);
 
         sc.close();
     }
