@@ -1,103 +1,63 @@
 import java.util.Scanner;
 
-public class p2{
-    public static void main(String[] args) {
+
+public class loanapproval{
+    public static void main(String[]args){
 
         Scanner sc = new Scanner(System.in);
 
-        int creditScore = sc.nextInt();
-        double annualIncome = sc.nextDouble();
-        double debtRatio = sc.nextDouble();
-        String loanType = sc.next();
+        int credit_score = sc.nextInt();
+        double A_income = sc.nextDouble();
+        double ratio = sc.nextDouble();
+        String type = sc.next();
 
-        String decision = "Rejected";
-        double maxLoanAmount = 0.0;
+        String Decision = "";
+        double max_amt = 0.0;
 
-       
-        if (creditScore < 600 || debtRatio > 50) {
-            decision = "Rejected";
-            maxLoanAmount = 0.0;
+        if(credit_score<600 || ratio>=50){
+            Decision = "Rejected";
         }
-        else {
+        else{
 
-            
-            String creditTier;
-
-            if (creditScore >= 750)
-                creditTier = "Excellent";
-            else if (creditScore >= 700)
-                creditTier = "Good";
-            else if (creditScore >= 650)
-                creditTier = "Fair";
-            else
-                creditTier = "Poor";
-
-          
-            String debtLevel;
-
-            if (debtRatio <= 30)
-                debtLevel = "Low";
-            else if (debtRatio <= 40)
-                debtLevel = "Moderate";
-            else
-                debtLevel = "High";
-
-        
-
-            if (loanType.equals("Home")) {
-
-                if (creditTier.equals("Excellent") && debtLevel.equals("Low")) {
-                    decision = "Approved";
-                    maxLoanAmount = annualIncome * 4;
-                }
-                else if (creditTier.equals("Good") && debtLevel.equals("Moderate")) {
-                    decision = "Needs Review";
-                    maxLoanAmount = annualIncome * 3;
-                }
-                else {
-                    decision = "Needs Review";
-                    maxLoanAmount = annualIncome * 3;
-                }
+            if(type.equals("Home")){
+            if((credit_score>=750) && (ratio<=30)){
+                Decision = "Approved";
+                max_amt = 4*A_income;
             }
-
-            else if (loanType.equals("Personal")) {
-
-                if (creditTier.equals("Excellent") && debtLevel.equals("Low")) {
-                    decision = "Approved";
-                    maxLoanAmount = annualIncome * 1;
-                }
-                else if (creditTier.equals("Fair") && debtLevel.equals("Moderate")) {
-                    decision = "Needs Review";
-                    maxLoanAmount = annualIncome * 0.5;
-                }
-                else {
-                    decision = "Needs Review";
-                    maxLoanAmount = annualIncome * 0.5;
-                }
-            }
-
-            else { 
-
-                if ((creditTier.equals("Excellent") || creditTier.equals("Good")) &&
-                        (debtLevel.equals("Low") || debtLevel.equals("Moderate"))) {
-
-                    decision = "Approved";
-                    maxLoanAmount = annualIncome * 3;
-                }
-                else {
-                    decision = "Needs Review";
-                    maxLoanAmount = annualIncome * 2;
-                }
+            else if((credit_score>=700 && credit_score<=749) && (ratio>=31 && ratio<=40)){
+                Decision = "Needs Reveiw";
+                max_amt = 3*A_income;
             }
         }
+        else if(type.equals("Personal")){
+            if((credit_score>=750) && (ratio<=30)){
+                Decision = "Approved";
+                max_amt = 1*A_income;
+            }
+            else if((credit_score>=650 && credit_score<=699) && (ratio>=31 && ratio<=40)){
+                Decision = "Needs Review";
+                max_amt = 0.5*A_income;
+            }
+        }
+        else if(type.equals("Business")){
+            if((credit_score>=750)|| (credit_score>=700 && credit_score<=749) && 
+            (ratio<=30 || (ratio>=31 && ratio<=40))){
+                Decision = "Approved";
+                max_amt = 3*A_income;
+            }
+        }
+        }
+        System.out.println("");
+        System.out.println("======Loan Approval Notice======");
+        System.out.println();
 
-        
-        System.out.println("Credit Score: " + creditScore);
-        System.out.printf("Annual Income: $%.1f\n", annualIncome);
-        System.out.printf("Debt-to-Income Ratio: %.1f%%\n", debtRatio);
-        System.out.println("Loan Type: " + loanType);
-        System.out.println("Decision: " + decision);
-        System.out.printf("Maximum Loan Amount: $%.1f\n", maxLoanAmount);
+
+        System.out.println("Credit Score : "+credit_score);
+        System.out.println("Annual Income : $"+A_income);
+        System.out.println("Debt-to-Income Ratio: "+ratio+" %");
+        System.out.println("Loan Type : "+type);
+        System.out.println("Decision : "+Decision);
+        System.out.println("Maximum Loan Amount : $"+max_amt);
 
         sc.close();
     }
