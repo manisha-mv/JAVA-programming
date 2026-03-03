@@ -80,4 +80,5 @@ public class p3 {
 
         sc.close();
     }
+
 }
