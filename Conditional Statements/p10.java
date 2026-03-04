@@ -5,11 +5,11 @@ public class p10 {
 
         Scanner sc = new Scanner(System.in);
 
-        // Inputs
+        
         String timeOfDay = sc.nextLine();
         double powerConsumption = sc.nextDouble();
         double renewablePercentage = sc.nextDouble();
-        sc.nextLine(); // consume newline
+        sc.nextLine();
         String rateTier = sc.nextLine();
 
         double baseRate = 0;
@@ -19,18 +19,18 @@ public class p10 {
         double potentialSavings = 0;
         String recommendation = "";
 
-        // 1️⃣ Set Base Rate by Tier
+    
         if (rateTier.equals("Basic")) {
             baseRate = 0.18;
         } 
         else if (rateTier.equals("Time-of-Use")) {
             baseRate = 0.15;
         } 
-        else { // Premium-Green
+        else { 
             baseRate = 0.12;
         }
 
-        // 2️⃣ Rate Multiplier by Time (Nested)
+       
         if (timeOfDay.equals("Peak")) {
             if (rateTier.equals("Time-of-Use"))
                 rateMultiplier = 1.8;
@@ -52,16 +52,16 @@ public class p10 {
                 rateMultiplier = 0.5;
         }
 
-        // 3️⃣ Renewable Credit Calculation
+       
         renewableCredit = (powerConsumption * renewablePercentage / 100) * baseRate;
 
-        // 4️⃣ Total Cost Calculation
+      
         totalCost = (powerConsumption * baseRate * rateMultiplier) - renewableCredit;
 
         if (totalCost < 0)
             totalCost = 0;
 
-        // 5️⃣ Recommendation Logic (Nested)
+       
         if (timeOfDay.equals("Peak") && renewablePercentage < 30) {
             recommendation = "Shift high-power appliances to Off-Peak hours";
             potentialSavings = powerConsumption * baseRate * (rateMultiplier - 0.8);
@@ -83,7 +83,7 @@ public class p10 {
             potentialSavings = 0;
         }
 
-        // Output
+      
         System.out.println("Time of Day: " + timeOfDay);
         System.out.println("Power Consumption: " + powerConsumption + " kWh");
         System.out.println("Renewable Energy: " + renewablePercentage + "%");
@@ -97,4 +97,5 @@ public class p10 {
 
         sc.close();
     }
+
 }
