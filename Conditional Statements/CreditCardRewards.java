@@ -87,4 +87,5 @@ public class CreditCardRewards {
 
         sc.close();
     }
+
 }
