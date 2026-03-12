@@ -17,3 +17,4 @@ public class FactorialCalculator_p4 {
     System.out.println("Factorial Of "+num +" = "+result);
     }
 }
+
