@@ -22,4 +22,3 @@ public class FibonacciSequence_p10 {
     }
 }
 
-
