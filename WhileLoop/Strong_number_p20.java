@@ -24,6 +24,7 @@ public class Strong_number_p20 {
         } 
         else{
           System.out.println("%d is not a storng number",original);
-        }       
+        } 
+        return 0;
     }
 }
