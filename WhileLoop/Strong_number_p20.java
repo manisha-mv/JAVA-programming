@@ -14,7 +14,7 @@ public class Strong_number_p20 {
             rem = n%10;
             for(int i = rem;i<=1;i--){
                 fact = fact*i;
-                
+            }
             sum = sum+fact;
             n= n/10;
         }
@@ -26,4 +26,3 @@ public class Strong_number_p20 {
         }       
     }
     }
-}
