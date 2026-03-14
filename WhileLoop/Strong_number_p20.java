@@ -15,16 +15,15 @@ public class Strong_number_p20 {
             for(int i = rem;i<=1;i--){
                 fact = fact*i;
                 
-            }
             sum = sum+fact;
             n= n/10;
         }
         if (n == original){
-            System.out.print(" %d Strong NUmber",original);
+            System.out.println(original+"Strong NUmber");
         } 
         else{
-          System.out.println("%d is not a storng number",original);
-        } 
-        return 0;
+          System.out.print(original+"is not a storng number");
+        }       
+    }
     }
 }
