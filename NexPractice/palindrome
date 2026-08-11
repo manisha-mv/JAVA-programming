@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[]args){
+        Scanner sc = new Scanner(System.in);
+        
+        int n1 = sc.nextInt();
+        int n2 = sc.nextInt();
+        
+        
+        for(int i = n1+1;i<n2;i++){
+            
+            int rev = 0;
+            int num = i;
+            
+            while(num!=0){
+                int dig = num%10;
+                rev = rev*10+dig;
+                num = num/10;
+                
+            }
+            
+            if(i == rev){
+                System.out.println("Palindrome numbers between"+n1+"and"+n2+"are"+i+" ");
+            }
+        }
+    }
+}
